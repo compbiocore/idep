@@ -95,3 +95,7 @@ open docker terminal
 ```
 > Rscript librarySetup.R
 ```
+
+
+## Issues 
+when docker compose kill container, installed r libraies will be gone
