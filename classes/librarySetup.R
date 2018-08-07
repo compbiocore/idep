@@ -37,16 +37,25 @@ list.of.bio.packages  <- c(
 	 sapply(pkgs.to.remove, remove.packages, lib = path.lib)
 }
 
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+new.bio.packages <- list.of.bio.packages[!(list.of.bio.packages %in% installed.packages()[,"Package"])]
+notInstalledPackageCount = length(new.packages) + length(new.bio.packages)
 
 #Install Require packages
-for(i in 1:10){
-	new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
-	if(length(new.packages)) install.packages(new.packages, repos="http://cran.rstudio.com/", dependencies=TRUE)
+while(notInstalledPackageCount != 0){
 
-	new.bio.packages <- list.of.bio.packages[!(list.of.bio.packages %in% installed.packages()[,"Package"])]
+	if(length(new.packages)) install.packages(new.packages, repos="http://cran.rstudio.com/", dependencies=TRUE, quiet=TRUE)
 	if(length(new.bio.packages)){
 	  source("https://bioconductor.org/biocLite.R")
-	  biocLite(new.bio.packages, suppressUpdates = T)
+	  biocLite(new.bio.packages, suppressUpdates = T, quiet=TRUE)
+	}
+
+	new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+	new.bio.packages <- list.of.bio.packages[!(list.of.bio.packages %in% installed.packages()[,"Package"])]
+	if( notInstalledPackageCount == length(new.packages) + length(new.bio.packages) )
+	{
+		#no new package installed.
+		break
 	}
 }
 
