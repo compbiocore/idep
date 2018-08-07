@@ -57,6 +57,9 @@ while(notInstalledPackageCount != 0){
 		#no new package installed.
 		break
 	}
+	else {
+	   notInstalledPackageCount = length(new.packages) + length(new.bio.packages)
+	}
 }
 
 #Load Packages
