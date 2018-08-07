@@ -23,7 +23,7 @@ list.of.bio.packages  <- c(
  if(1) { # remove all old packages, to solve problem caused by Bioconductor upgrade
 	# create a list of all installed packages
 	 ip <- as.data.frame(installed.packages())
-	 head(ip)
+	# head(ip)
 	# if you use MRO, make sure that no packages in this library will be removed
 	 ip <- subset(ip, !grepl("MRO", ip$LibPath))
 	# we don't want to remove base or recommended packages either\
@@ -32,7 +32,7 @@ list.of.bio.packages  <- c(
 	 path.lib <- unique(ip$LibPath)
 	# create a vector with all the names of the packages you want to remove
 	 pkgs.to.remove <- ip[,1]
-	 head(pkgs.to.remove)
+	# head(pkgs.to.remove)
 	# remove the packages
 	 sapply(pkgs.to.remove, remove.packages, lib = path.lib)
 }
