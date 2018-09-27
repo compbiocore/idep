@@ -23,7 +23,7 @@ list.of.bio.packages  <- c(
  if(1) { # remove all old packages, to solve problem caused by Bioconductor upgrade
 	# create a list of all installed packages
 	 ip <- as.data.frame(installed.packages())
-	 head(ip)
+	# head(ip)
 	# if you use MRO, make sure that no packages in this library will be removed
 	 ip <- subset(ip, !grepl("MRO", ip$LibPath))
 	# we don't want to remove base or recommended packages either\
@@ -32,21 +32,33 @@ list.of.bio.packages  <- c(
 	 path.lib <- unique(ip$LibPath)
 	# create a vector with all the names of the packages you want to remove
 	 pkgs.to.remove <- ip[,1]
-	 head(pkgs.to.remove)
+	# head(pkgs.to.remove)
 	# remove the packages
 	 sapply(pkgs.to.remove, remove.packages, lib = path.lib)
 }
 
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+new.bio.packages <- list.of.bio.packages[!(list.of.bio.packages %in% installed.packages()[,"Package"])]
+notInstalledPackageCount = length(new.packages) + length(new.bio.packages)
 
 #Install Require packages
-for(i in 1:10){
-	new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
-	if(length(new.packages)) install.packages(new.packages, repos="http://cran.rstudio.com/", dependencies=TRUE)
+while(notInstalledPackageCount != 0){
 
-	new.bio.packages <- list.of.bio.packages[!(list.of.bio.packages %in% installed.packages()[,"Package"])]
+	if(length(new.packages)) install.packages(new.packages, repos="http://cran.rstudio.com/", dependencies=TRUE, quiet=TRUE)
 	if(length(new.bio.packages)){
 	  source("https://bioconductor.org/biocLite.R")
-	  biocLite(new.bio.packages, suppressUpdates = T)
+	  biocLite(new.bio.packages, suppressUpdates = T, quiet=TRUE)
+	}
+
+	new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+	new.bio.packages <- list.of.bio.packages[!(list.of.bio.packages %in% installed.packages()[,"Package"])]
+	if( notInstalledPackageCount == length(new.packages) + length(new.bio.packages) )
+	{
+		#no new package installed.
+		break
+	}
+	else {
+	   notInstalledPackageCount = length(new.packages) + length(new.bio.packages)
 	}
 }
 
