@@ -2,9 +2,11 @@
 
 docker build ./nginx/. -t nginx  #nginx image should be build very quick
 
-docker build . -t webapp #webapp image need hours to build
+#docker build . -t webapp #webapp image need hours to build
 
-echo 'Docker images have been built. Start downloading data.'
+docker pull compbiocore/idep-r-configuration:latest && docker tag compbiocore/idep-r-configuration:latest webapp:latest
+
+echo 'Docker images have been built/retrieved. Start downloading data.'
 
 mkdir data
 cd data
@@ -25,7 +27,7 @@ wget https://sdsu.box.com/shared/static/sorewt7w6iypmhg2k2xhyi8myeit156o.gz -O c
 tar xvzf convertIDs.db.tar.gz
 rm convertIDs.db.tar.gz
 
-echo 'Data has been downloaded and unziped'
+echo 'Data has been downloaded and unzipped'
 
-echo 'All image are ready to run'
+echo 'All images are ready to run'
 
