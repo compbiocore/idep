@@ -6,6 +6,7 @@ RUN apt-get update -qq && apt-get install -y \
   git-core \
   libcurl4-openssl-dev \
   libgdal1-dev \
+  libgeos-dev \
   libxml2-dev \
   libxml2  \
   libssl-dev \
