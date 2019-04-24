@@ -7,6 +7,7 @@ RUN apt-get update -qq && apt-get install -y \
   libcurl4-openssl-dev \
   libgdal-dev \
   libgeos-dev \
+  freeglut3-dev \
   libxml2-dev \
   libxml2  \
   libssl-dev \
