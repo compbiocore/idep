@@ -5,12 +5,15 @@ MAINTAINER Ge lab "xijin.ge@sdstate.edu"
 RUN apt-get update -qq && apt-get install -y \
   git-core \
   libcurl4-openssl-dev \
+  libgdal1-dev \
   libxml2-dev \
   libxml2  \
   libssl-dev \
   libudunits2-dev \
   libmariadb-client-lgpl-dev \
   libpng-dev \
+  libpq-dev \
+  mesa-common-dev \
   wget \
   unzip
 
