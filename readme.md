@@ -41,6 +41,7 @@ sudo sh setup.sh
 Wait until the script shows 'iDEP is ready.' It can take several hours, as the script installs dozens of R pacakges and also copies a large database automatically.
 
 3. Start system
+
 **iDEP is not compatible with docker-compose version 1.23** - newer and some older versions will work (1.24.0 is recommended).
 
 ```
