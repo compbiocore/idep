@@ -90,7 +90,9 @@ maxSamplesEDAplot = 100  # max number of samples for EDA plots
 ################################################################
 
 # relative path to data files
-datapath = "../../data/data92/"   # production server
+#datapath = "../../data/data92/"   # production server
+# absolute file path to data files
+datapath = "/srv/data/data92/"
 
 sqlite  <- dbDriver("SQLite")
 convert <- dbConnect( sqlite, paste0(datapath, "convertIDs.db"), flags=SQLITE_RO)  #read only mode
