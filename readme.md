@@ -3,10 +3,10 @@
 
 [iDEP](http://ge-lab.org/idep/) is a Shiny app for analyzing RNA-seq or other transcriptomic data. See [documentation](https://idepsite.wordpress.com/) and [paper](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-018-2486-6). Based on annotation of 220 animal and plant genomes in Ensembl BioMart as of 6/4/2018. Additional data from KEGG, Reactome, MSigDB (human), GSKB (mouse) and araPath (arabidopsis). For feedbacks or data contributions (genes and GO mapping of any species), please contact us, or visit our homepage. Send us suggestions or any error message to help improve iDEP.
 
-## iDEP is a web application hosted at http://bioinformatics.sdstate.edu/idep/ 
+## iDEP is a web application hosted at PLACEHOLDER (ours is a fork of http://bioinformatics.sdstate.edu/idep/)
 
 ## Local installation
-Local installation of this software is possible through steps below. But it is not supported or updated freqently. 
+Local installation of this software is possible through the steps below, but it is not supported by our group (see the parent repository for more information). 
 
 ## To run iDEP on your laptop you will need to download the database and follow these instructions:
 
@@ -49,7 +49,7 @@ sudo docker-compose up -d --scale webapp=15
 ```
 Now the server is running. 
 Note: `webapp=15` indecate the web application count. Based on your system capacity, you can increase or decrease this number.
-You can bring everything down, removing the containers entirely, with the down command. Pass `--voluems` to also remove the data volume.
+You can bring everything down, removing the containers entirely, with the down command. Pass `--volumes` to also remove the data volume.
 ```
 sudo docker-compose down --volumes
 ```
@@ -61,5 +61,5 @@ http://docs.rstudio.com/shiny-server/
 
 
 ## Resources
-### Docker-Compoer documentation
+### docker-compose documentation
 https://docs.docker.com/compose/reference/overview/
